@@ -17,7 +17,7 @@ module.exports.Model = require('hyperbone-model').Model.extend({
     if (self.__etag){
       req.set('If-None-Match', self.__etag);
     }
-
+    req.set('Cache-Control', 'max-age=0');
     req.end(function(res){
 
         // for GET we only want a 200
