@@ -140,11 +140,11 @@ module.exports.Model = require('hyperbone-model').Model.extend({
           if (_.isArray(value)){
             _.each(value, function (value){
               if (value || value === 0 || value === ''){
-                segments.push(key + '=' + encodeURI(value));
+                segments.push(key + '=' + encodeURIComponent(value));
               }
             });
           } else if (value || value === 0 || value === ''){
-            segments.push(key + '=' + encodeURI(value));
+            segments.push(key + '=' + encodeURIComponent(value));
           }
         });
 
