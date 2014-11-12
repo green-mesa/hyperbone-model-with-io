@@ -3,7 +3,12 @@ var _ = require('underscore');
 
 module.exports.Model = require('hyperbone-model').Model.extend({
 
-  fetch : function( uri ){
+  fetch : function( uri, fn){
+
+    if (!fn && _.isFunction(uri)){
+      fn = uri;
+      uri = null;
+    };
 
     var self = this;
 
@@ -30,6 +35,10 @@ module.exports.Model = require('hyperbone-model').Model.extend({
           self.trigger('sync', self, res);
         } else {
           self.trigger('sync-error', res.status, res);
+        }
+
+        if (fn){
+          fn (res.status, res);
         }
 
       });
