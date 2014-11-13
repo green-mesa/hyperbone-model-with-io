@@ -8,7 +8,7 @@ module.exports.Model = require('hyperbone-model').Model.extend({
     if (!fn && _.isFunction(uri)){
       fn = uri;
       uri = null;
-    };
+    }
 
     var self = this;
 
